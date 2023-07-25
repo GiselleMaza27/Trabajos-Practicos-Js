@@ -9,7 +9,8 @@
 
 // const tabla = function(numero){
 //     for (let i = 0; i == 10 ; i++) {
-//         let arreglo = push(numero * i)
+//         let arreglo = []
+//             arreglo = push(numero * i)
 //         return arreglo
         
 //     }

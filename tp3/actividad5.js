@@ -5,7 +5,7 @@
 //  una mezcla de ambas.
 
 
-const cadena = function(texto){
+const cadena = function(texto = prompt("Ingrese un texto")){
     if(texto == texto.toUpperCase()){
         return("La cadena esta formada solo por mayusculas")
     }else if(texto == texto.toLowerCase()){

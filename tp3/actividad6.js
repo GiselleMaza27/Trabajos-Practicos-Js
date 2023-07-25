@@ -7,14 +7,13 @@
 
 
 
-const perimetro = function(ladoA,ladoB){
+const perimetro = function(ladoA = Number(prompt("Ingrese el valor de uno de los lados del rectangulo")),ladoB  = Number(prompt("Ingrese el valor del segundo lado del rectangulo"))
+){
     if(isNaN(ladoA) || isNaN(ladoB)){
      alert("Debe ingresar el valor de los lados del rectangulo en numeros")
     }
     return 2*(ladoA + ladoB)
 }
 
-let ladoA = Number(prompt("Ingrese el valor de uno de los lados del rectangulo"))
-let ladoB = Number(prompt("Ingrese el valor del segundo lado del rectangulo"))
 
 document.write(perimetro(ladoA,ladoB))

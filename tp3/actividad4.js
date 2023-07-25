@@ -18,3 +18,7 @@ const parImpar = function(numero){
 }
 
 console.log(parImpar(58))
+
+let tes = 4+5
+
+document.write(tes)
