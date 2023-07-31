@@ -15,21 +15,31 @@ class Producto {
         this.nombre = nombre;
         this.precio = precio;
     }
+    // imprimirDatos(){
+    //     document.write("------PRODUCTO------");
+    //     document.write("<ul>");
+    //         (`<li>Código: ${this.codigo}</li>`);
+    //         (`<li>Nombre: ${this.nombre}</li>`);
+    //         (`<li>Precio: $${this.precio}</li>`);
+    //     document.write("</ul>");
+    // }
     imprimirDatos(){
         document.write("------PRODUCTO------");
-        document.write("<ul>");
-            (`<li>Código: ${this.codigo}</li>`);
-            (`<li>Nombre: ${this.nombre}</li>`);
-            (`<li>Precio: $${this.precio}</li>`);
-        document.write("</ul>");
+        document.write `Código: ${this.codigo}`
+        document.write `Nombre: ${this.nombre}`
+          document.write  `Precio: $${this.precio}`
+       
     }
   }
+  
 
   
-  let producto1 = new Producto(3652,"Remera",3000)
+  let producto1 = new Producto(3652 ,"Remera", 3000)
   let producto2 = new Producto(3698,"Campera",7500)
   let producto3 = new Producto(3701,"Pantalón",6800)
 
   let mercaderia=[producto1,producto2,producto3]
 
-  document.write(imprimirDatos(mercaderia))
+//   document.write(imprimirDatos(mercaderia))
+
+document.write(producto1.imprimirDatos())
