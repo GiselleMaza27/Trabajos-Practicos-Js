@@ -25,9 +25,9 @@ class Producto {
     // }
     imprimirDatos(){
         document.write("------PRODUCTO------");
-        document.write `Código: ${this.codigo}`
-        document.write `Nombre: ${this.nombre}`
-          document.write  `Precio: $${this.precio}`
+        document.write `Código: ${this.codigo} <br>`
+        document.write `Nombre: ${this.nombre}<br>`
+          document.write  `Precio: $${this.precio}<br>`
        
     }
   }

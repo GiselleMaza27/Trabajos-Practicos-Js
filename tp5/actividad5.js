@@ -79,7 +79,34 @@ class Persona {
     //     }
     // }
     
+
+
+mostrarDatos(){
+    console.log("---Datos Personales---")
+    for (const key in this) {
+    console.log(`${key}:${this[key]}`)}      
+    }
+
+
+GenerarDNI(){
+    if(!this.dni){
+        for (let index = 0; index < 8 ; index++) {
+            let numerito = math.round(math.random()*9);
+            this.dni += String(numerito);
+            console.log(`El dni generado es: ${this.dni}`)
+        }else{
+            console.log("Ya tienes DNI")
+
+        }
+    }
+
 }
+
+}
+
+
+
+
 
 let chico =new Persona("Juan",1998,24,42548697,"M",78,1.72)
 console.log(chico.mostrarGeneracion())
