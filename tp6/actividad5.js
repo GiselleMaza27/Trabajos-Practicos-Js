@@ -9,11 +9,6 @@ existente en la página.
 let btn5 = document.querySelector("#boton5")
 
 
-// const Agregarlista  = () =>{
-//     document.querySelector("").innerHTML = "<li></li>"
-
-// }
-// let li = document.createElement('li')
 
 
 class Usuario {
@@ -26,6 +21,7 @@ let nombres = []
 let nombre = document.querySelector("#input1")
 
 
+let contenedor = document.querySelector("ul")
 
 const guardarDatos=(event)=>{
     event.preventDefault();
@@ -33,16 +29,16 @@ const guardarDatos=(event)=>{
     const persona = new Usuario(
         nombre.value,
     );
+    
     nombres.push(persona)
     document.querySelector("form").reset();
 
+    let item= document.createElement("li");
 
-    let li = document.createElement("li");
-    li = nombres.at(-1);
+     item.innerText=nombres.at(-1).nombre;
 
-     let contenedor = document.querySelector(".ul");
-     contenedor.appendChild(li);
-  
+     contenedor.appendChild(item);
+ 
 }
 
 
