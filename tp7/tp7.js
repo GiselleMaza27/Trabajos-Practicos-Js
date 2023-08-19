@@ -23,7 +23,7 @@ pantalla su título y descripción.*/
 
 
 // creo el arreglo para almacenar
-const almacenamiento = []
+const almacenamiento = JSON.parse(localStorage.getItem("carga")) || []
 
 
 // creo una clase que tenga todas las propiedades que necesito
@@ -51,6 +51,7 @@ let descripcion =document.querySelector("#inputDescripcion")
 
 const GuardarDatos = (event)=>{
     event.preventDefault()
+    console.log(imagen.value)
     const carga = new Cargar(imagen.value , titulo.value , descripcion.value )
     almacenamiento.push(carga)
     localStorage.setItem('cargas',JSON.stringify(almacenamiento))
@@ -65,15 +66,41 @@ let cuerpoGaleria = document.querySelector("#galeria")
 
 const Galeria =()=>{
     cuerpoGaleria.innerHTML= ""
+
+    if(almacenamiento.length==0){
+        let mensajeVacio = document.createElement('p');
+        mensajeVacio.innerHTML= `<h3>No hay imagenes disponibles</h3>`;
+        cuerpoGaleria.append(mensajeVacio)
+    
+    }else{
     almacenamiento.map((carga,index) =>{
         let div = document.createElement("div");
-        let img = `<img src="${almacenamiento.imagen}"/>
-        <h3>${almacenamiento.titulo}</h3>
-        <p>${almacenamiento.descripcion}</p>`;
-        div.innerHTML = img;
+        div.classList = "col";
 
+        let tarjeta = `<div class="card h-100 m-3 ">
+        <img src = "${carga.imagen}" class="card-img-top me-3" alt=""
+        <div class= "card-body">
+        <h5 class= "card-title">${carga.titulo}</h5>
+        <p class= "card-text">${carga.descripcion}</p>
+        </div>
+        <div>
+         <button type="button" class="btn btn-primary">Primary</button>
+         </div>
+        </div>
+        `;
+
+        div.innerHTML = tarjeta;
         cuerpoGaleria.append(div);
-
-    })
+    
+    })}
 
 }
+/*<div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>*/
