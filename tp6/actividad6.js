@@ -6,14 +6,34 @@ el párrafo.
 - Al hacer clic en "Disminuir", disminuye el tamaño del texto
  en el párrafo.*/
 
- let texto = document.querySelector("#parrafo6")
+//  let texto = document.querySelector("#parrafo6")
 
 
 //  const AumentarTamaño = () =>{
-//     texto.font-ResizeObserverSize.
+//     texto.font-ResizeObserverSize.             
 
 //  }
 
-const Aumentar = () =>{
-.style.fontSize = 40;
-}
+// const Aumentar = () =>{
+// .style.fontSize = 40;
+// }
+
+let aumentaFuente = document.querySelector("#aumentar");
+let disminuyeFuente = document.querySelector("#disminuir");
+let textoFuente = document.querySelector("#cambioFuente");
+let size = 10;
+let tamaño = 10;
+
+const aumentarFuente = () => {
+  size += 10;
+  textoFuente.style.fontSize = `${size}px`;
+  tamaño += 10;
+  textoFuente.style.fontSize = `${tamaño}px`;
+};
+
+const disminuirFuente = () => {
+  size -= 10;
+  textoFuente.style.fontSize = `${size}px`;
+  tamaño -= 10;
+  textoFuente.style.fontSize = `${tamaño}px`;
+};
