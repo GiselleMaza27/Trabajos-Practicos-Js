@@ -9,9 +9,9 @@ Guardar el objeto en una lista en LocalStorage.
 Crear una galería de imágenes. Si no hay imágenes 
 cargadas en el LocalStorage, que lo indique por pantalla.
 
-Crear un botón que elimine la imagen que se está mostrando
+Crear un botón que elimine la imagen que se está mostrando 
 por pantalla y otro que me permita editar solamente el título
- o descripción.
+ o descripción
 
 Modificar el código para que solo se muestre una imagen 
 a la vez, sin su título y descripción.
@@ -23,7 +23,7 @@ pantalla su título y descripción.*/
 
 
 // creo el arreglo para almacenar
-const almacenamiento = JSON.parse(localStorage.getItem("carga")) || []
+const almacenamiento = JSON.parse(localStorage.getItem("clave")) || []
 
 
 // creo una clase que tenga todas las propiedades que necesito
@@ -49,25 +49,29 @@ let descripcion =document.querySelector("#inputDescripcion")
 // 5 capturo y limpio el formulario con reset 
 // 6 hago foco en el 1er input imagen
 
-const GuardarDatos = (event)=>{
+const guardarDatos = (event)=>{
     event.preventDefault()
     console.log(imagen.value)
     const carga = new Cargar(imagen.value , titulo.value , descripcion.value )
     almacenamiento.push(carga)
-    localStorage.setItem('cargas',JSON.stringify(almacenamiento))
+    localStorage.setItem('clave',JSON.stringify(almacenamiento))
     document.querySelector('form').reset()
     imagen.focus()
 
-    Galeria()
+  
+//  galeria()
+mostrarUnaVez()
+
+ 
 
 
 }
 let cuerpoGaleria = document.querySelector("#galeria")
 
-const Galeria =()=>{
-    cuerpoGaleria.innerHTML= ""
+const galeria =()=>{
+    cuerpoGaleria.innerHTML= "";
 
-    if(almacenamiento.length==0){
+    if(almacenamiento.length===0){
         let mensajeVacio = document.createElement('p');
         mensajeVacio.innerHTML= `<h3>No hay imagenes disponibles</h3>`;
         cuerpoGaleria.append(mensajeVacio)
@@ -78,29 +82,62 @@ const Galeria =()=>{
         div.classList = "col";
 
         let tarjeta = `<div class="card h-100 m-3 ">
-        <img src = "${carga.imagen}" class="card-img-top me-3" alt=""
+        <img src = "${carga.imagen}" class="card-img-top " alt=""
         <div class= "card-body">
         <h5 class= "card-title">${carga.titulo}</h5>
         <p class= "card-text">${carga.descripcion}</p>
+        <div>
+        <button onclick="eliminar()" type="button" class="btn btn-primary">Borrar</button>
         </div>
         <div>
-         <button type="button" class="btn btn-primary">Primary</button>
-         </div>
+        <button onclick="editar()" type="button" class="btn btn-success">Editar</button>
+        </div>
+        </div>
+       
         </div>
         `;
 
         div.innerHTML = tarjeta;
         cuerpoGaleria.append(div);
+        
     
     })}
 
 }
-/*<div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>*/
+
+
+
+const eliminar =(index)=>{
+    almacenamiento.splice(index, 1);
+    localStorage.setItem("clave", JSON.stringify(almacenamiento))
+    galeria()
+
+}
+const editar = ()=>{
+    
+}
+
+
+
+//  Modificar el código para que solo se muestre una imagen 
+//  a la vez, sin su título y descripción.
+
+const mostrarUnaVez = (carga)=>{
+    cuerpoGaleria.innerHTML = "";
+    let foto = document.createElement('img');
+    foto.src = carga.imagen;
+    foto.alt = "imagen"
+
+    cuerpoGaleria.append(foto);
+
+
+
+ }
+
+// contador = 0
+//  const carrousel =(cuerpoGaleria)=>{
+//     cuerpoGaleria.addEventListener('click',)
+//  }
+
+//   galeria()
+
