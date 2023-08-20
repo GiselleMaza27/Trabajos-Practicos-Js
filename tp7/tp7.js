@@ -122,22 +122,57 @@ const editar = ()=>{
 //  Modificar el código para que solo se muestre una imagen 
 //  a la vez, sin su título y descripción.
 
-const mostrarUnaVez = (carga)=>{
+// const mostrarUnaVez = (carga)=>{
+//     cuerpoGaleria.innerHTML = "";
+//     let foto = document.createElement('img');
+//     foto.src = carga.imagen
+//     foto.alt = "imagen"
+
+//     cuerpoGaleria.append(foto);
+
+//  }
+
+
+ const mostrarUnaVez = () => {
     cuerpoGaleria.innerHTML = "";
-    let foto = document.createElement('img');
-    foto.src = carga.imagen;
-    foto.alt = "imagen"
+    const fotos = JSON.parse(localStorage.getItem("clave"));
+    let foto = `<img src="${fotos[fotos.length - 1].imagen}" alt="${
+      fotos[fotos.length - 1].titulo
+    }" />`;
+    cuerpoGaleria.innerHTML = foto;
+  };
 
-    cuerpoGaleria.append(foto);
 
 
+
+
+
+
+
+
+
+
+
+contador = 0
+ const carousel =(almacenamiento)=>{
+   let divCarousel = document.createElement("div");
+   divCarousel.classList = "carousel-inner ";
+   let tarjeCarousel = `<div class="carousel-item active">
+   <img src=${carga.imagen} class="d-block w-100"
+   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Anterior</span>
+ </button>
+ <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+   <span class="visually-hidden">Siguiente</span>
+ </button>
+</div>`
+
+divCarousel.innerHTML = tarjeCarousel;
+cuerpoGaleria.appendChild(divCarousel);
 
  }
 
-// contador = 0
-//  const carrousel =(cuerpoGaleria)=>{
-//     cuerpoGaleria.addEventListener('click',)
-//  }
-
-//   galeria()
+  galeria()
 
